@@ -1,0 +1,100 @@
+openapi: 3.0.1
+info:
+  description: Topic Information
+  title: Topic API
+  version: "2.0"
+servers:
+- description: Generated server url
+  url: http://localhost:8086
+paths:
+  /demo/topics:
+    delete:
+      operationId: getAllTopics_2
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: not found
+      tags:
+      - topic-controller
+      x-accepts: application/json
+    get:
+      operationId: getAllTopics_3
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: not found
+      tags:
+      - topic-controller
+      x-accepts: application/json
+    post:
+      operationId: addTopic_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Topic'
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "400":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Topic'
+                type: array
+          description: Invalid id supplied
+        "404":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Topic'
+                type: array
+          description: not found
+      tags:
+      - topic-controller
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: getAllTopics_1
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: not found
+      tags:
+      - topic-controller
+      x-accepts: application/json
+components:
+  schemas:
+    Topic:
+      example:
+        name: name
+        description: description
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      type: object
+

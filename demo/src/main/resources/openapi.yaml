@@ -1,0 +1,92 @@
+openapi: 3.0.1
+info:
+  title: Topic API
+  description: Topic Information
+  version: '2.0'
+servers:
+  - url: http://localhost:8086
+    description: Generated server url
+paths:
+  /demo/topics:
+    get:
+      tags:
+        - topic-controller
+      operationId: getAllTopics_3
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: not found
+    put:
+      tags:
+        - topic-controller
+      operationId: getAllTopics_1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: not found
+    post:
+      tags:
+        - topic-controller
+      operationId: addTopic_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Topic'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '400':
+          description: Invalid id supplied
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
+        '404':
+          description: not found
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
+    delete:
+      tags:
+        - topic-controller
+      operationId: getAllTopics_2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json: {}
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: not found
+
+
+components:
+  schemas:
+    Topic:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
